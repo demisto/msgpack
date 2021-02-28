@@ -1,4 +1,4 @@
-module github.com/vmihailenco/msgpack
+module github.com/demisto/msgpack
 
 require (
 	github.com/kr/pretty v0.1.0 // indirect
