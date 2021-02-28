@@ -62,6 +62,11 @@ func (d *Decoder) DecodeTime() (time.Time, error) {
 		// Assume that zero time does not have timezone information.
 		return tm.UTC(), nil
 	}
+	if y := tm.Year(); y < 0 || y >= 10000 {
+		// RFC 3339 is clear that years are 4 digits exactly.
+		// See golang.org/issue/4556#c15 for more discussion.
+		return time.Time{}, nil
+	}
 	return tm, nil
 }
 
